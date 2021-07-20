@@ -29,7 +29,7 @@ def connect():
             conn.send('==terminate')
             conn.close() 
             break
-        elif command == '==transfer': 
+        elif '==transfer' in command: 
             modules.transfer(conn,command)
         else:
             conn.send(command) 
