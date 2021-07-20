@@ -1,7 +1,8 @@
 # Compromising-Creations
-Open source simple bot computer manager written in python. Initial release coming soon.
+Open source simple bot computer manager written in python.
 <br/>
-## Upcoming features:
+
+## features:
 - Reverse TCP shell
   - Custom commands:
     - Inline TCP file transfer
@@ -12,3 +13,5 @@ Open source simple bot computer manager written in python. Initial release comin
 - Passive Modes
 - Persistence
 - Module Kidnapping
+
+How to use these can be found in the [Client](./client/README.md) and [Controller (server)](./controller/README.md) manuals.
