@@ -10,3 +10,5 @@ Open source simple bot computer manager written in python. Initial release comin
     - System info (including public IP and lat/long position
 - Passive & Active Jobs
 - Passive Modes
+- Persistence
+- Module Kidnapping
