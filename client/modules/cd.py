@@ -1,6 +1,7 @@
 import getpass, os, platform
 def cd(command):
-	path = command.strip('\r\n')[3:]
+	res = {}
+	path = command[3:]
 
 	if path == '~':
 		system = platform.system()
@@ -12,3 +13,8 @@ def cd(command):
 		elif system == "Windows":
 			homedir = "/"
 		os.chdir(homedir.format(getpass.getuser()))
+		res['path'] = homedir
+	else:
+		os.chdir(path)
+		res['path'] = path
+	return res
