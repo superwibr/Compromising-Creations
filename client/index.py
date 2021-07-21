@@ -21,12 +21,14 @@ def connect():
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	print( "[CCCli] Attempting to connect to {} on port {} ...".format(host, port) )
 	s.connect((host, port))
+	print( "[CCCli] Controller accepted connection." )
 
 	while True: 
 		command = s.recv(1024).decode()
 
 		if '==terminate' in command:
 			try:
+				print( "[CCCli] Controller terminated connection." )
 				s.close()
 			except ConnectionResetError as e:
 				if e.errno != errno.ECONNRESET:
