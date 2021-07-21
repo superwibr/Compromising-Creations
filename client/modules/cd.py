@@ -1,5 +1,6 @@
 import getpass, os, platform
-def cd(command):
+from logging import ERROR
+def cd(s, command):
 	res = {}
 	path = command[3:]
 
@@ -12,9 +13,11 @@ def cd(command):
 			homedir = "/Users/{}"
 		elif system == "Windows":
 			homedir = "/"
-		os.chdir(homedir.format(getpass.getuser()))
-		res['path'] = homedir
-	else:
+		path = homedir.format(getpass.getuser())
+
+	try:
 		os.chdir(path)
-		res['path'] = path
-	return res
+		s.send('[CCCli] Changed directory to {}'.format(path))
+	except ERROR as e:
+		s.send('[{}] Cannot find "{}"'.format(e, path).encode())
+	return path

