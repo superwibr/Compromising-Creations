@@ -25,3 +25,5 @@ def sysinfo():
 	except Exception as e:
 		logging.exception(e)
 
+	return info
+

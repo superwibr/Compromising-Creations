@@ -5,7 +5,7 @@ import os # Needed for file operation
 import modules
 
 
-host = '127.0.0.1'
+host = '192.168.0.16'
 port = 8080
 instruction = ''
 
@@ -24,15 +24,15 @@ def connect():
 
 
     while True: 
-        command = input("CCCtrl > ")
+        command = input("CCCtrl > ").encode()
         if command == "==terminate":
-            conn.send('==terminate')
+            conn.send('==terminate'.encode())
             conn.close() 
             break
-        elif '==transfer' in command: 
+        elif b'==transfer' in command: 
             modules.transfer(conn,command)
         else:
-            conn.send(command) 
+            conn.send(command.encode()) 
             print(conn.recv(1024))
 
 connect()
