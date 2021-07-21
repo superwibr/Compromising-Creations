@@ -31,13 +31,10 @@ def connect():
 				print( "[CCCli] Controller terminated connection." )
 				s.close()
 			except ConnectionResetError as e:
-				if e.errno != errno.ECONNRESET:
-					raise # Not error we are looking for
-				pass # Handle error here.
+				pass
 			break
 		elif '==transfer' in command: # we use 'in' here since there will be more arguments.
 			cmd,path = command.split('*')
-
 			try:
 				modules.transfer(s,path)
 			except Exception as e:
@@ -45,9 +42,10 @@ def connect():
 				pass
 		elif command[:2] == 'cd':
 			try:
-				os.chdir(command.strip('\r\n')[3:])
+				modules.cd(command)
 			except:
-				s.send('[ERROR] The system path cannot be found.'.encode())
+				print('[ERROR] The system path cannot be found.')
+				s.send('[ERROR]'.encode())
 		else:
 			try:
 				CMD = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
