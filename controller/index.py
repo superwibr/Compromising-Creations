@@ -27,6 +27,7 @@ def connect():
         command = input("CCCtrl > ")
         if command == "==terminate":
             conn.send('==terminate'.encode())
+            conn.recv(1024)
             conn.close() 
             break
         elif '==transfer' in command: 

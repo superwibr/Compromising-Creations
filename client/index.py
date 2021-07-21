@@ -27,6 +27,7 @@ def connect():
 
 		if '==terminate' in command:
 			s.close()
+			s.send('closed')
 			break
 		elif '==transfer' in command: # we use 'in' here since there will be more arguments.
 			cmd,path = command.split('*')
