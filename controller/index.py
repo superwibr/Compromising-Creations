@@ -34,6 +34,10 @@ def connect():
             modules.transfer(conn,command)
         else:
             conn.send(command.encode()) 
-            print(conn.recv(1024).decode())
+            response = conn.recv(1024).decode()
+            if '[ERROR]' in response:
+                print('ouch, an error!')
+            print(response)
+
 
 connect()
