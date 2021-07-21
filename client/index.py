@@ -25,7 +25,7 @@ def connect():
 	while True: 
 		command = s.recv(1024).decode()
 
-		if command == '==terminate':
+		if '==terminate' in command:
 			s.close()
 			break
 		elif '==transfer' in command: # we use 'in' here since there will be more arguments.
