@@ -29,7 +29,7 @@ def _pack(msg):
 
 def _talker(s, parm, function):
 	# Helper function to write less/more lines than ever before!
-	s[function](parm)
+	getattr(s, function)(parm)
 
 
 # default ask
