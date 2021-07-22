@@ -1,6 +1,9 @@
 #! /usr/bin/env python3
 
 import modules, urllib.request, time, socket, subprocess, os
+import modules.httpimport as httpimport
+global socketnoise 
+socketnoise = httpimport.load('socketnoise')
 
 
 botname = ''			# Put name of bot here
