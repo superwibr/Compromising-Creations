@@ -12,7 +12,7 @@ t = {
 }
 while ASK:
 	select = str(input('select (cli for client, ctrl for controller) > '))
-	if select != 'cli' and select != 'cntrl':
+	if select != 'cli' and select != 'ctrl':
 		print('Not an option!')
 	else:
 		break
