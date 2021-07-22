@@ -18,4 +18,4 @@ while ASK:
 		break
 print(f"Selected: {t[select]}")
 print(f"Deleting {t['n'+select]}...")
-shutil.rmtree("./controller/")
+shutil.rmtree(f"./{t['n'+select]}/")
