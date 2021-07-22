@@ -39,30 +39,30 @@ _C = { # reference dict
 def _mkseq(code):
 	return f'\033[{code}m'
 
-def info(message, appname):
+def info(message, appname=None):
 	if not appname:
 		appname = 'i'
 
-	template = f"{_mkseq('1;34')}[{appname}] {_mkseq('0;94')}{message}"
+	template = f"{_mkseq('1;34')}[{appname}] {_mkseq('0;94')}{message}{_mkseq(0)}"
 	print(template)
 
-def done(message, appname):
+def done(message, appname=None):
 	if not appname:
 		appname = '\u2713'
 
-	template = f"{_mkseq('1;32')}[{appname}] {_mkseq('0;92')}{message}"
+	template = f"{_mkseq('1;32')}[{appname}] {_mkseq('0;92')}{message}{_mkseq(0)}"
 	print(template)
 
-def warn(message, appname):
+def warn(message, appname=None):
 	if not appname:
 		appname = '!'
 
-	template = f"{_mkseq('1;33')}[{appname}] {_mkseq('0;93')}{message}"
+	template = f"{_mkseq('1;33')}[{appname}] {_mkseq('0;93')}{message}{_mkseq(0)}"
 	print(template)
 
-def err(message, appname):
+def err(message, appname=None):
 	if not appname:
 		appname = '\u26A0'
 
-	template = f"{_mkseq('1;31')}[{appname}] {_mkseq('0;91')}{message}"
+	template = f"{_mkseq('1;31')}[{appname}] {_mkseq('0;91')}{message}{_mkseq(0)}"
 	print(template)
