@@ -24,7 +24,7 @@ def _recvpack(conn):
     return _recvall(conn, msglen)
 
 def _pack(msg):
-	msg = struct.pack('>I', len(msg)) + msg.encode('utf-8')
+	msg = struct.pack('>I', len(msg)) + str(msg).encode('utf-8')
 	return msg
 
 def _talker(conn, parm, function):
@@ -51,5 +51,5 @@ def hear(conn):
 	msg = _recvpack(conn).decode('utf-8')
 	return msg
 def respond(conn, res):
-	res = _pack(str(res))
+	res = _pack(res)
 	_talker(conn, res, 'sendall')
