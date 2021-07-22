@@ -24,9 +24,14 @@ while ASK:
 	else:
 		break
 print(f"Selected: {t[select]}")
-print("Copying modules...")
-shutil.copyfile("./.setup/modules/socketnoise.py", f"./{t['n'+select]}/modules/socketnoise.py")
 
+print("Copying modules...")
+shutil.copyfile("./.setup/modules/socketnoise.py", f"./{t[select]}/modules/socketnoise.py")
+print(f"Modules copied to ./{t[select]}/modules/")
+
+print('Installing default SSL Root certificates...')
+exec(open('./.setup/install_certifi.py').read())
+print('Installed.')
 
 if delete == 'yes':
 	print(f"Deleting {t['n'+select]}...")
