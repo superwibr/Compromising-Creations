@@ -21,7 +21,7 @@ def _recvpack(conn):
         return None
     msglen = struct.unpack('>I', raw_msglen)[0]
     # Read the message data
-    return _recvall(conn, msglen)
+    return _recvall(conn, msglen).decode()
 
 def _pack(msg):
 	msg = struct.pack('>I', len(msg)) + str(msg).encode('utf-8')
@@ -35,7 +35,7 @@ def _talker(conn, parm, function):
 # default ask
 def ask(conn, msg):
 	msg = _pack(str(msg))					# pack length in message
-	_talker(conn, msg, 'sendall')	# send message
+	_talker(conn, msg, 'sendall')			# send message
 	res = _recvpack(conn)					# expect response
 	return res								# return response
 
