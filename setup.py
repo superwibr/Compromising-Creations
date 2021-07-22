@@ -28,7 +28,7 @@ print("Copying modules...")
 shutil.copyfile("./.setup/modules/socketnoise.py", f"./{t['n'+select]}/modules/socketnoise.py")
 
 
-if delete:
+if delete == 'yes':
 	print(f"Deleting {t['n'+select]}...")
 	shutil.rmtree(f"./{t['n'+select]}/")
 	print("Deleted.")
