@@ -15,3 +15,4 @@ Open source simple bot computer manager written in python.
 - Module Kidnapping
 
 How to use these can be found in the [Client](./client/README.md) and [Controller (server)](./controller/README.md) manuals.
+Run `$ python3 setup.py` to set up modules and remove unused files.

@@ -6,9 +6,6 @@ import struct
 
 __author__ = "Superwibr"
 
-def main():
-	return 'yes'
-
 def _recvall(s, n):
     # Helper function to recv n bytes or return None if EOF is hit
     data = bytearray()
@@ -39,7 +36,7 @@ def _talker(s, parm, function):
 
 # default ask
 def ask(s, msg):
-	msg = _pack(msg)			# pack length in message
+	msg = _pack(str(msg))			# pack length in message
 	_talker(s, msg, 'sendall')	# send message
 	res = _recvpack(s)			# expect response
 	return res					# return response
@@ -57,6 +54,3 @@ def hear(s):
 	return msg
 def respond(s, res):
 	_talker(_pack(res))
-
-if __name__ == "__main__":
-	main()
