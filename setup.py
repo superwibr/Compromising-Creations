@@ -26,7 +26,10 @@ while ASK:
 print(f"Selected: {t[select]}")
 
 print("Copying modules...")
-shutil.copyfile("./.setup/modules/socketnoise.py", f"./{t[select]}/modules/socketnoise.py")
+def cpmod(mod):
+	shutil.copyfile(f"./.setup/modules/{mod}.py", f"./{t[select]}/modules/{mod}.py")
+cpmod('socketnoise')
+cpmod('colorize')
 print(f"Modules copied to ./{t[select]}/modules/")
 
 print('Installing default SSL Root certificates...')

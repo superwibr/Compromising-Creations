@@ -4,8 +4,6 @@
 
 import struct
 
-__author__ = "Superwibr"
-
 def _recvall(s, n):
     # Helper function to recv n bytes or return None if EOF is hit
     data = bytearray()
