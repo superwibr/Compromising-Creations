@@ -19,7 +19,7 @@ while ASK:
 ASK = True
 while ASK:
 	delete = str(input('Delete files after pass? (yes/no) > '))
-	if delete != 'yes' and select != 'no':
+	if delete != 'yes' and delete != 'no':
 		print('Not an option!')
 	else:
 		break
