@@ -51,4 +51,4 @@ def hear(s):
 	msg = _recvpack(s).decode('utf-8')
 	return msg
 def respond(s, res):
-	_talker(_pack(res))
+	_talker(s, _pack(res))

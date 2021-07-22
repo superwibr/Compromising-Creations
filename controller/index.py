@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 
 import socket, modules
+import modules.socketnoise as socketnoise
 
 
 host = '192.168.0.16'
@@ -24,15 +25,13 @@ def connect():
     while True: 
         command = input("CCCtrl > ")
         if command == "==terminate":
-            conn.send('==terminate'.encode())
-            conn.recv(1024)
-            conn.close() 
+            socketnoise.respond('==terminate')
+            s.close() 
             break
         elif '==transfer' in command: 
             modules.transfer(conn,command)
         else:
-            conn.send(command.encode()) 
-            response = conn.recv(1024).decode()
+            response = socketnoise.ask(s, command)
             if '[ERROR]' in response:
                 print('ouch, an error!')
             print(response)
