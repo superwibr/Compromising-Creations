@@ -2,7 +2,7 @@
 	Colorize: non-messy ANSI Select Graphic Rendition implementation
 """
 
-C = { # reference dict
+_C = { # reference dict
 	'modifiers':{
 			'reset': 0,
 			'bold': 1,
