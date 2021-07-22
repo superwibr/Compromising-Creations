@@ -35,7 +35,7 @@ def _talker(conn, parm, function):
 # default ask
 def ask(conn, msg):
 	msg = _pack(str(msg))					# pack length in message
-	_talker(conn, _pack(msg), 'sendall')	# send message
+	_talker(conn, msg, 'sendall')	# send message
 	res = _recvpack(conn)					# expect response
 	return res								# return response
 
@@ -51,4 +51,5 @@ def hear(conn):
 	msg = _recvpack(conn).decode('utf-8')
 	return msg
 def respond(conn, res):
-	_talker(conn, _pack(res), 'sendall')
+	res = _pack(str(res))
+	_talker(conn, res, 'sendall')
