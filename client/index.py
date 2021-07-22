@@ -1,9 +1,6 @@
 #! /usr/bin/env python3
 
 import modules, urllib.request, time, socket, subprocess, os
-import modules.httpimport as httpimport
-global socketnoise 
-socketnoise = httpimport.load('socketnoise', 'https://raw.githubusercontent.com/superwibr/Compromising-Creations/dev/')
 
 
 botname = ''			# Put name of bot here

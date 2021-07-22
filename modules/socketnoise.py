@@ -6,7 +6,8 @@ import struct
 
 __author__ = "Superwibr"
 
-
+def main():
+	return 'yes'
 
 def _recvall(s, n):
     # Helper function to recv n bytes or return None if EOF is hit
@@ -56,3 +57,6 @@ def hear(s):
 	return msg
 def respond(s, res):
 	_talker(_pack(res))
+
+if __name__ == "__main__":
+	main()
