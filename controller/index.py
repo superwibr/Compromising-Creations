@@ -31,7 +31,7 @@ def connect():
         elif '==transfer' in command: 
             modules.transfer(conn,command)
         else:
-            response = socketnoise.ask(s, command)
+            response = socketnoise.ask(conn, command)
             if '[ERROR]' in response:
                 print('ouch, an error!')
             print(response)
