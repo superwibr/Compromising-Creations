@@ -23,15 +23,15 @@ while ASK:
 		print('Not an option!')
 	else:
 		break
-print(f"Selected: {t[select]}")
+print(f"\033[96mSelected: {t[select]}\033[0m")
 
-print("Copying modules...")
+print("\033[96mCopying modules...\033[0m")
 shutil.copyfile("./.setup/modules/socketnoise.py", f"./{t[select]}/modules/socketnoise.py")
-print(f"Modules copied to ./{t[select]}/modules/")
+print(f"\033[96mModules copied to ./{t[select]}/modules/\033[0m")
 
-print('Installing default SSL Root certificates...')
+print('\033[96mInstalling default SSL Root certificates...\033[0m')
 exec(open('./.setup/install_certifi.py').read())
-print('Installed.')
+print('\033[96mInstalled.\033[0m')
 
 if delete == 'yes':
 	print(f"Deleting {t['n'+select]}...")
