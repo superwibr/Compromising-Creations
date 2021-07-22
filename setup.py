@@ -16,6 +16,19 @@ while ASK:
 		print('Not an option!')
 	else:
 		break
+ASK = True
+while ASK:
+	delete = str(input('Delete files after pass? (yes/no) > '))
+	if delete != 'yes' and select != 'no':
+		print('Not an option!')
+	else:
+		break
 print(f"Selected: {t[select]}")
-print(f"Deleting {t['n'+select]}...")
-shutil.rmtree(f"./{t['n'+select]}/")
+print("Copying modules...")
+shutil.copyfile("./.setup/modules/socketnoise.py", f"./{t['n'+select]}/modules/socketnoise.py")
+
+
+if delete:
+	print(f"Deleting {t['n'+select]}...")
+	shutil.rmtree(f"./{t['n'+select]}/")
+	print("Deleted.")
