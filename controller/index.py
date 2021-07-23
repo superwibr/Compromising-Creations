@@ -34,7 +34,7 @@ def connect():
             response = socketnoise.ask(conn, command)
             if '[ERROR]' in response:
                 print('ouch, an error!')
-            print(response)
+            print(str(response))
 
 
 connect()
