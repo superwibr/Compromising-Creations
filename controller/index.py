@@ -25,7 +25,7 @@ def connect():
     while True: 
         command = input("CCCtrl > ")
         if command == "==terminate":
-            socketnoise.respond('==terminate')
+            socketnoise.respond(s, '==terminate')
             s.close() 
             break
         elif '==transfer' in command: 
