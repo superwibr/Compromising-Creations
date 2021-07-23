@@ -21,7 +21,7 @@ def _recvpack(conn):
         return None
     msglen = struct.unpack('>I', raw_msglen)[0]
     # Read the message data
-    return _recvall(conn, msglen).decode()
+    return _recvall(conn, msglen).decode('utf-8')
 
 def _pack(msg):
 	msg = struct.pack('>I', len(msg)) + str(msg).encode('utf-8')
