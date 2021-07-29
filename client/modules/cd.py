@@ -1,5 +1,5 @@
 import getpass, os, platform
-import socketnoise
+from . import socketnoise
 def cd(s, command):
 	res = {}
 	path = command[3:]
