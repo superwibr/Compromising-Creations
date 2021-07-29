@@ -1,5 +1,5 @@
 import getpass, os, platform
-from logging import ERROR
+import socketnoise
 def cd(s, command):
 	res = {}
 	path = command[3:]
@@ -17,7 +17,7 @@ def cd(s, command):
 
 	try:
 		os.chdir(path)
-		s.send('[CCCli] Changed directory to {}'.format(path))
-	except ERROR as e:
-		s.send('[{}] Cannot find "{}"'.format(e, path).encode())
+		socketnoise.say(s, '[CCCli] Changed directory to {}'.format(path))
+	except Exception as e:
+		socketnoise.say(s, '[CCli:{}] Cannot find "{}"'.format(e, path))
 	return path

