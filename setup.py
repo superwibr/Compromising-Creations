@@ -33,9 +33,9 @@ cpmod('socketnoise')
 cpmod('colorize')
 color.done(f"Modules copied to ./{t[select]}/modules/")
 
-color.info('Installing default SSL Root certificates...')
-exec(open('./setup/install_certifi.py').read())
-color.done('Installed.')
+#color.info('Installing default SSL Root certificates...')
+#exec(open('./setup/install_certifi.py').read())
+#color.done('Installed.')
 
 if delete == 'yes':
 	color.info(f"Deleting {t['n'+select]}...")
