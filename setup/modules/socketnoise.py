@@ -50,6 +50,6 @@ def answer(conn, callback):
 def hear(conn):
 	msg = _recvpack(conn)
 	return msg
-def respond(conn, res):
+def say(conn, res):
 	res = _pack(res)
 	_talker(conn, res, 'sendall')

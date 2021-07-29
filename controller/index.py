@@ -25,13 +25,14 @@ def connect():
     while True: 
         command = input("CCCtrl > ")
         if command == "==terminate":
-            socketnoise.respond(s, '==terminate')
+            socketnoise.say(conn, '==terminate')
             s.close() 
             break
         elif '==transfer' in command: 
             modules.transfer(conn,command)
         else:
-            response = socketnoise.ask(conn, command)
+            socketnoise.say(conn, command)
+            response = socketnoise.hear(conn)
             if '[ERROR]' in response:
                 print('ouch, an error!')
             print(str(response))

